@@ -1,0 +1,22 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadProductionS3Objects",
+      "Principal": {
+        "AWS": "arn:aws:iam::111122233:role/JohnDoe"
+      },
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectVersion"
+      ],
+      "Resource": "arn:aws:s3:::DOC-Example-Bucket/*",
+      "Condition": {
+        "StringEquals": {
+          "s3:ExistingObjectTag/environment": "production"
+        }
+      }
+    }
+  ]
+}
